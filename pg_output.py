@@ -6,7 +6,7 @@ class Changes:
 	A class for object modifications, like color
 	"""
 	def __init__(self):
-		self.red = 0
+		self.red = 255
 		self.green = 0
 		self.blue = 0
 
@@ -15,20 +15,20 @@ class Changes:
 		A "cheap" rotation trough RGB colours 
 		"""
 		if self.red < 255:
-			self.red += 1
-		elif self.green < 255:
-			self.green += 1
+			self.red += 3
 		elif self.blue < 255:
-			self.blue += 1
+			self.blue += 3
+		elif self.green < 255:
+			self.green += 3
 		else:
-			self.red = 0
+			self.red = 54
 			self.green = 0
 			self.blue = 0
-		#print(red)
+
 		colour = (self.red, self.green, self.blue)
+		print(colour)
 		#screen.fill(colour)
 		return colour
-
 class MultiSquare():
 	"""
 	Responsible for the generation of blocks from a True/False 'array'
