@@ -87,13 +87,12 @@ class MultiSquare():
 		"""
 		The actual production of the visual field
 		"""
-
-		# self.cases = {
-		# 	True: pygame.draw.rect(screen, colour, self.rect),
-		# 	False: pygame.draw.rect(screen, (0,0,0), self.rect)
-		# 	}
-		self.array = array
+		
+		#Change colour - other modes, see above in the "changes class"
+		#or just set it to a srbg tuple (r, g, b) for static color
 		colour = self.changes.rgb()
+		#colour = self.changes.cheap_rgb()
+		self.array = array
 		for y in range(0, len(self.array)):
 			for x in range(0, len(self.array)):
 				#setting new coordinates for the rectangle
