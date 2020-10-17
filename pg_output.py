@@ -12,7 +12,33 @@ class Changes:
 
 	def rgb(self):
 		"""
-		A "cheap" rotation trough RGB colours 
+		A real implementation of RGB
+		"""
+		
+		if self.red < 255 and self.green == 255:
+			self.red += 5
+			self.green -= 5
+		elif self.red < 255 and self.green > 0 and self.blue == 0:
+			self.red += 5
+			self.green -= 5
+		elif self.blue < 255 and self.red > 0:
+			self.blue += 5
+			self.red -= 5
+		elif self.green < 255 and self.blue > 0:
+			self.green += 5
+			self.blue -= 5
+		elif self.red < 255 and self.green > 0:
+			self.red += 5
+			self.blue -= 5
+
+		colour = (self.red, self.green, self.blue)
+		print(colour)
+		#screen.fill(colour)
+		return colour
+
+	def cheap_rgb(self):
+		"""
+		A "cheap" interation trough RGB colours 
 		"""
 		if self.red < 255:
 			self.red += 3
