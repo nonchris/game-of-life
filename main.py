@@ -2,6 +2,7 @@ import random
 import copy
 import time
 import pygame
+import sys
 
 #importing pygame output code
 import pg_output as pgo
@@ -140,12 +141,24 @@ class Game:
 
 #cxecuting the whole thing
 if __name__ == "__main__":
-	objects = 90
-	block_size = 5
-	#objects +2 because of 1:1 and noch 0:0 as startpoint
-	#block_size +2 because of the space between objects
-	win_size = (objects + 2) * (block_size + 2)
-	pygame.init()
+	
+	#SETTINGS
+	#True keeps the blcok size by 5 and scales the windows around it - better for large numbers
+	#False scales the blocks to fit into a 1080x1080 grid - better for smaller numbers
+	objects = 7
+	scale_window = False
+
+
+	if scale_window == True:
+		#objects +2 because of 1:1 and noch 0:0 as startpoint
+		#block_size +2 because of the space between objects
+		block_size = 10
+		win_size = (objects + 2) * (block_size + 2)
+
+	else:
+		win_size = 1080
+		block_size = 1080 / (objects +2)
+		block_size = int(block_size)
 
 	#Building the Window
 	#flags = pygame.OPENGL | pygame.RESIZABLE
@@ -155,17 +168,17 @@ if __name__ == "__main__":
 	pygame.display.set_caption("Game of life")
 
 	pygame.display.flip() #activating window
-	game = Game(objects)
+	game = Game(objects, block_size=block_size)
 
 	while True:
 		for event in pygame.event.get():
 		 	if event.type == pygame.QUIT:
-		 		print("quitting")
-		 		pygame.quit()
+		 		sys.exit("Closed by user")
+
 		
 		game.pygame_output(screen)
 		game.count()
-		#time.sleep(0.05) #timer - ensures a more stable framerate
+		time.sleep(0.05) #timer - ensures a more stable framerate
 		#game.output() #old terminal output
 
 
