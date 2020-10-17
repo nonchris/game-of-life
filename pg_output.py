@@ -37,9 +37,9 @@ class MultiSquare():
 	Lists must contain values that can be differentiated by True or False
 	"""
 
-	def __init__(self, array, x=1, y=1, size=30):
+	def __init__(self, array, screen, x=1, y=1, size=5):
 
-
+		self.screen = screen
 		self.array = array
 
 		#start values
@@ -52,6 +52,7 @@ class MultiSquare():
 		self.thickness = 1
 		#making a default rectanlge
 		self.rect = ((self.x, self.y), self.sqare)
+
 		
 
 	def prod(self, colour=(255, 255, 255)):
@@ -73,9 +74,13 @@ class MultiSquare():
 				
 				#checking if Rectangle is color or black
 				if obj:
-					pygame.draw.rect(screen, colour, self.rect)
+					pygame.draw.rect(self.screen, colour, self.rect)
 				else:
-					pygame.draw.rect(screen, (0,0,0), self.rect)
+					pygame.draw.rect(self.screen, (0,0,0), self.rect)
+
+	def update(self):
+		pygame.display.update()
+
 
 
 if __name__ == "__main__":
@@ -83,13 +88,12 @@ if __name__ == "__main__":
 
 	#Building the Window
 	#flags = pygame.OPENGL | pygame.RESIZABLE
-	flags = pygame.RESIZABLE
-	screen = pygame.display.set_mode((1920, 1080), flags)
+	flags = pygame.RESIZABLE #| pygame.NOFRAME
+	screen = pygame.display.set_mode((1080, 1080), flags)
 
 	pygame.display.set_caption("Game of life")
 
 	pygame.display.flip() #activating window
-
 
 	#test array
 	array = [[True, True, True, True],
@@ -97,10 +101,9 @@ if __name__ == "__main__":
 			[True, True, True, True],
 			[True, True, True, True]]
 
-	mult_sq = MultiSquare(array) #init squares
+	mult_sq = MultiSquare(array, screen) #init squares
 
 	change = Changes() #init changes
-
 	#main-loop
 	while True:
 		for event in pygame.event.get():
