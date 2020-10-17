@@ -143,13 +143,13 @@ class Game:
 if __name__ == "__main__":
 	
 	#SETTINGS
-	#True keeps the blcok size by 5 and scales the windows around it - better for large numbers
+	#True keeps the block size by 5 and scales the windows around it - better for large numbers
 	#False scales the blocks to fit into a 1080x1080 grid - better for smaller numbers
 	objects = 7
 	scale_window = False
 
 
-	if scale_window == True:
+	if scale_window_fixed_blocks == True:
 		#objects +2 because of 1:1 and noch 0:0 as startpoint
 		#block_size +2 because of the space between objects
 		block_size = 10
@@ -157,8 +157,9 @@ if __name__ == "__main__":
 
 	else:
 		win_size = 1080
-		block_size = 1080 / (objects +2)
+		block_size = 1080 / (objects) - 2
 		block_size = int(block_size)
+		print(block_size)
 
 	#Building the Window
 	#flags = pygame.OPENGL | pygame.RESIZABLE
@@ -178,7 +179,7 @@ if __name__ == "__main__":
 		
 		game.pygame_output(screen)
 		game.count()
-		time.sleep(0.05) #timer - ensures a more stable framerate
+		#time.sleep(0.05) #timer - ensures a more stable framerate
 		#game.output() #old terminal output
 
 
