@@ -1,6 +1,10 @@
 import random
 import copy
 import time
+import pygame
+
+#importing pygame output code
+import pg_output as pgo
 
 
 class Game:
@@ -125,14 +129,43 @@ class Game:
 		print(chr(27) + "[2J")
 		print(self.field_str)
 
+	def pygame_output(self, screen):
+
+		self.mult_sqare = pgo.MultiSquare(self.field, screen)
+		self.mult_sqare.prod()
+		self.mult_sqare.update()
+
+
 
 #cxecuting the whole thing
 if __name__ == "__main__":
-	game = Game(90)
+
+	pygame.init()
+
+	#Building the Window
+	#flags = pygame.OPENGL | pygame.RESIZABLE
+	flags = pygame.RESIZABLE #| pygame.NOFRAME
+	screen = pygame.display.set_mode((1080, 1080), flags)
+
+	pygame.display.set_caption("Game of life")
+
+	pygame.display.flip() #activating window
+	game = Game(180)
+
 	while True:
-		game.output()
+		for event in pygame.event.get():
+		 	if event.type == pygame.QUIT:
+		 		print("quitting")
+		 		pygame.quit()
+		
+		game.pygame_output(screen)
 		game.count()
-		time.sleep(0.2) #timer
+		#time.sleep(0.05) #timer - ensures a more stable framerate
+		#game.output() #old terminal output
+
+
+
+
 
 
 
