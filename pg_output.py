@@ -57,7 +57,7 @@ class MultiSquare():
 
 		
 
-	def prod(self, colour=(255, 255, 255)):
+	def prod(self, array, colour=(255, 255, 255)):
 		"""
 		The actual production of the visual field
 		"""
@@ -66,7 +66,7 @@ class MultiSquare():
 		# 	True: pygame.draw.rect(screen, colour, self.rect),
 		# 	False: pygame.draw.rect(screen, (0,0,0), self.rect)
 		# 	}
-
+		self.array = array
 		colour = self.changes.rgb()
 		for y in range(0, len(self.array)):
 			for x in range(0, len(self.array)):

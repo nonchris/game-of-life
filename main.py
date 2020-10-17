@@ -133,7 +133,7 @@ class Game:
 
 	def pygame_output(self, screen):
 
-		self.mult_sqare.prod()
+		self.mult_sqare.prod(self.field)
 		self.mult_sqare.update()
 
 
