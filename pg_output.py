@@ -53,6 +53,8 @@ class MultiSquare():
 		#making a default rectanlge
 		self.rect = ((self.x, self.y), self.sqare)
 
+		self.changes = Changes()
+
 		
 
 	def prod(self, colour=(255, 255, 255)):
@@ -65,6 +67,7 @@ class MultiSquare():
 		# 	False: pygame.draw.rect(screen, (0,0,0), self.rect)
 		# 	}
 
+		colour = self.changes.rgb()
 		for y in range(0, len(self.array)):
 			for x in range(0, len(self.array)):
 				#setting new coordinates for the rectangle

@@ -22,6 +22,8 @@ class Game:
 						for line in range(0, self.size)]
 		self.field.append([False for i in range(0, self.size+1)]) #adding extra row of False
 
+		self.mult_sqare = pgo.MultiSquare(self.field, screen) #builder for pygame input
+
 
 
 	def count(self):
@@ -131,7 +133,6 @@ class Game:
 
 	def pygame_output(self, screen):
 
-		self.mult_sqare = pgo.MultiSquare(self.field, screen)
 		self.mult_sqare.prod()
 		self.mult_sqare.update()
 
