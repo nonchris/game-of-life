@@ -3,12 +3,13 @@ An implementation of Conways game of life with RGB, using pygame for display
 
 ## Struckture
 The project is split into two files.  
-`main.py`
+##### `main.py`
 * initialization
 * contains main class `Game` for field calculation
 * calling the output functions
 
-pg_output.py
+
+##### `pg_output.py`  
 * handling of the window and it's content in `MultiSquare`
 * color and appearence of those blocks in `Changes`
 
