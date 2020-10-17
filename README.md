@@ -7,7 +7,7 @@ The project is split into two files.
 * initialization
 * contains main class `Game` for field calculation
 * calling the output functions
-‌
+
 `pg_output.py`  
 * handling of the window and it's content in `MultiSquare`
 * color and appearence of those blocks in `Changes`
