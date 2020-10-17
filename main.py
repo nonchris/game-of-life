@@ -146,15 +146,16 @@ if __name__ == "__main__":
 
 	#True keeps the block size by 5 and scales the windows around it - better for large numbers
 	#False scales the blocks to fit into a 1080x1080 grid - better for smaller numbers
-	objects = 50
+	objects = 120
 	block_size = 10
 	scale_window_fixed_blocks = True
 
 
 	if scale_window_fixed_blocks == True:
-		#objects +2 because of 1:1 and noch 0:0 as startpoint
+		#objects +2 because because we have a gap from 2 between the block
 		#block_size +2 because of the space between objects
-		win_size = (objects + 2) * (block_size + 2)
+		#plus block_size because 1:1 and noch 0:0 is used as startpoint (times 2 for symmetry)
+		win_size = (objects) * (block_size + 2) + block_size * 2
 
 	else:
 		win_size = 1080
