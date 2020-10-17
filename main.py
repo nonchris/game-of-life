@@ -8,7 +8,7 @@ import pg_output as pgo
 
 
 class Game:
-	def __init__(self, field_size=6):
+	def __init__(self, field_size=6, block_size=5):
 		"""
 		generating random symmetric field/array
 		True is "living cell" False is dead.
@@ -22,7 +22,7 @@ class Game:
 						for line in range(0, self.size)]
 		self.field.append([False for i in range(0, self.size+1)]) #adding extra row of False
 
-		self.mult_sqare = pgo.MultiSquare(self.field, screen) #builder for pygame input
+		self.mult_sqare = pgo.MultiSquare(self.field, screen, size=block_size) #builder for pygame input
 
 
 
@@ -140,18 +140,22 @@ class Game:
 
 #cxecuting the whole thing
 if __name__ == "__main__":
-
+	objects = 90
+	block_size = 5
+	#objects +2 because of 1:1 and noch 0:0 as startpoint
+	#block_size +2 because of the space between objects
+	win_size = (objects + 2) * (block_size + 2)
 	pygame.init()
 
 	#Building the Window
 	#flags = pygame.OPENGL | pygame.RESIZABLE
 	flags = pygame.RESIZABLE #| pygame.NOFRAME
-	screen = pygame.display.set_mode((1080, 1080), flags)
+	screen = pygame.display.set_mode((win_size, win_size), flags)
 
 	pygame.display.set_caption("Game of life")
 
 	pygame.display.flip() #activating window
-	game = Game(180)
+	game = Game(objects)
 
 	while True:
 		for event in pygame.event.get():
