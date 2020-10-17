@@ -32,7 +32,6 @@ class Changes:
 			self.blue -= 5
 
 		colour = (self.red, self.green, self.blue)
-		print(colour)
 		#screen.fill(colour)
 		return colour
 
@@ -52,9 +51,10 @@ class Changes:
 			self.blue = 0
 
 		colour = (self.red, self.green, self.blue)
-		print(colour)
 		#screen.fill(colour)
 		return colour
+
+
 class MultiSquare():
 	"""
 	Responsible for the generation of blocks from a True/False 'array'
