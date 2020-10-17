@@ -8,7 +8,7 @@ The project is split into two files.
 * contains main class `Game` for field calculation
 * calling the output functions
 
-`pg_output.py`  
+pg_output.py
 * handling of the window and it's content in `MultiSquare`
 * color and appearence of those blocks in `Changes`
 
@@ -16,7 +16,7 @@ The project is split into two files.
 You can set the the amount of calculated objects and the way the windows and its blocks are scaled.  
 Just go to the bottom of the `main.py` file and change the variables at the `settings` section.  
 ‌
-There is also a way to change the RGB style and colour of the simulation by changing the `colour` parameter in `prod()` in `pg_output.py`
+There is also a way to change the RGB style and colour of the simulation by changing the `colour` parameter of `prod()` in `pg_output.py`
 
 ### How to install
 `pip install -r requirements.txt`  
