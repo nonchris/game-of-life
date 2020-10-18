@@ -15,10 +15,9 @@ The project is split into two files.
 
 ## Settings
 You can set the the amount of calculated objects and the way the windows and its blocks are scaled.  
-Just go to the bottom of the `main.py` file and change the variables at the `settings` section.  
-The block-size is also changeable - this only aplied when `scale_window` is active  
+Those settings are adjustable in `settings.ini`.
 ‌
-There is also a way to change the RGB style and colour of the simulation by changing the `colour` parameter of `prod()` in `pg_output.py`
+There is also a way to change the RGB style and colour of the simulation by changing the `colour` parameter of `prod()` in `pg_output.py`, but thats a bit more tricky ;)
 
 ### How to install
 `pip install -r requirements.txt`  
