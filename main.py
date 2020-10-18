@@ -146,10 +146,10 @@ if __name__ == "__main__":
 
 	#True keeps the block size by 5 and scales the windows around it - better for large numbers
 	#False scales the blocks to fit into a 1080x1080 grid - better for smaller numbers
-	objects = 120
-	block_size = 10
-	scale_window_fixed_blocks = True
-
+	objects = 10
+	block_size = 10 #applies only to scaled window
+	win_size = 1080 #applies only to scaled blocks
+	scale_window_fixed_blocks = False
 
 	if scale_window_fixed_blocks == True:
 		#objects +2 because because we have a gap from 2 between the block
@@ -158,9 +158,8 @@ if __name__ == "__main__":
 		win_size = (objects) * (block_size + 2) + block_size * 2
 
 	else:
-		win_size = 1080
-		block_size = 1080 / (objects) - 2
-		block_size = int(block_size)
+		block_size = win_size / (objects + 2) #plus 2 because we have 1 pixel around the board
+		block_size = block_size - 2 #minus because we have two units distance between each pixel
 		print(block_size)
 
 	#Building the Window
