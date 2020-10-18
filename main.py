@@ -3,6 +3,7 @@ import copy
 import time
 import pygame
 import sys
+import configparser
 
 #importing pygame output code
 import pg_output as pgo
@@ -142,14 +143,13 @@ class Game:
 #cxecuting the whole thing
 if __name__ == "__main__":
 	
-	##SETTINGS##
-
-	#True keeps the block size by 5 and scales the windows around it - better for large numbers
-	#False scales the blocks to fit into a 1080x1080 grid - better for smaller numbers
-	objects = 10
-	block_size = 10 #applies only to scaled window
-	win_size = 1080 #applies only to scaled blocks
-	scale_window_fixed_blocks = False
+	#getting settings
+	config = configparser.ConfigParser()
+	objects = config.read("settings.ini")
+	objects = int(config['settings']['blocks'])
+	block_size = int(config['settings']['block_size'])
+	win_size = int(config['settings']['win_size'])
+	scale_window_fixed_blocks = bool(config['settings']['scale_window_fixed_blocks'])
 
 	if scale_window_fixed_blocks == True:
 		#objects +2 because because we have a gap from 2 between the block
@@ -158,9 +158,9 @@ if __name__ == "__main__":
 		win_size = (objects) * (block_size + 2) + block_size * 2
 
 	else:
-		block_size = win_size / (objects + 2) #plus 2 because we have 1 pixel around the board
-		block_size = block_size - 2 #minus because we have two units distance between each pixel
-		print(block_size)
+		#plus 2 because we have 1 pixel around the board
+		#minus because we have two units distance between each pixel
+		block_size = (win_size / (objects + 2)) -2
 
 	#Building the Window
 	#flags = pygame.OPENGL | pygame.RESIZABLE
